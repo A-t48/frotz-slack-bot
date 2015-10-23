@@ -90,7 +90,7 @@ func okMessage(m rtm.Message) bool {
 
 	log.Printf(channel)
 
-	return msgType == "message" && len(channel) > 0 && channel == "C0D1YQ44R" && len(text) > 0 && text[0] != '@'
+	return msgType == "message" && len(channel) > 0 && channel == "C0D1YQ44R" && len(text) > 0 && text[0] == '>'
 }
 
 func main() {
