@@ -86,7 +86,7 @@ func okMessage(m rtm.Message) bool {
 	if _, ok := m["text"].(string); !ok {
 		return false
 	}
-	return msgType == "message" && len(channel) > 0 && channel == 'zork'
+	return msgType == "message" && len(channel) > 0 && channel == "zork"
 }
 
 func main() {
