@@ -83,13 +83,14 @@ func okMessage(m rtm.Message) bool {
 	if _, ok := m["user"].(string); !ok {
 		return false
 	}
-	if _, ok := m["text"].(string); !ok {
+	text, ok := m["text"].(string)
+	if !ok {
 		return false
 	}
 
 	log.Printf(channel)
 
-	return msgType == "message" && len(channel) > 0 && channel[0] == 'C'
+	return msgType == "message" && len(channel) > 0 && channel == "C0D1YQ44R" && len(text) > 0 && text[0] != '@'
 }
 
 func main() {
