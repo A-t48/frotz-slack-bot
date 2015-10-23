@@ -16,10 +16,10 @@ var (
 )
 
 func onMessage(msg rtm.Message, respond chan rtm.Message) {
-	if !directMessage(msg) {
+	if !okMessage(msg) {
 		return
 	}
-	user := msg["user"].(string)
+	user := "lindenlab"
 	text := msg["text"].(string)
 
 	var response string
@@ -67,7 +67,7 @@ func onMessage(msg rtm.Message, respond chan rtm.Message) {
 
 }
 
-func directMessage(m rtm.Message) bool {
+func okMessage(m rtm.Message) bool {
 	// Ignore reply_to messages; these are for already sent messages.
 	if _, ok := m["reply_to"]; ok {
 		return false
@@ -86,7 +86,7 @@ func directMessage(m rtm.Message) bool {
 	if _, ok := m["text"].(string); !ok {
 		return false
 	}
-	return msgType == "message" && len(channel) > 0 && channel[0] == 'D'
+	return msgType == "message" && len(channel) > 0 && channel == 'zork'
 }
 
 func main() {
