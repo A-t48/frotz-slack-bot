@@ -17,7 +17,7 @@ var (
 
 func onMessage(msg rtm.Message, respond chan rtm.Message) {
 	if !okMessage(msg) {
-		log.Printf("message not ok: %s %s", msg["user"], msg["channel"])
+		log.Printf("message not ok: %s %s", msg["user"].(string), msg["channel"].(string))
 		return
 	}
 	user := "lindenlab"
