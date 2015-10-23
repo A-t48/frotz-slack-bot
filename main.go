@@ -17,7 +17,6 @@ var (
 
 func onMessage(msg rtm.Message, respond chan rtm.Message) {
 	if !okMessage(msg) {
-		log.Printf("message not ok: %s %s", msg["user"].(string), msg["channel"].(string))
 		return
 	}
 	user := "lindenlab"
@@ -87,6 +86,9 @@ func okMessage(m rtm.Message) bool {
 	if _, ok := m["text"].(string); !ok {
 		return false
 	}
+
+	log.Printf(channel)
+
 	return msgType == "message" && len(channel) > 0 && channel == "zork"
 }
 
