@@ -21,8 +21,8 @@ func onMessage(msg rtm.Message, respond chan rtm.Message) {
 	}
 	user := "lindenlab"
 	text := msg["text"].(string)
-	text := text[1, len(text)]
-	
+	text := text[1:len(text)]
+
 	var response string
 	defer func() {
 		respond <- rtm.NewResponse(msg, "```"+response+"```")
