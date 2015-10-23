@@ -89,7 +89,7 @@ func okMessage(m rtm.Message) bool {
 
 	log.Printf(channel)
 
-	return msgType == "message" && len(channel) > 0 && channel == "zork"
+	return msgType == "message" && len(channel) > 0 && channel[0] == 'C'
 }
 
 func main() {
