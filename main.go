@@ -21,7 +21,8 @@ func onMessage(msg rtm.Message, respond chan rtm.Message) {
 	}
 	user := "lindenlab"
 	text := msg["text"].(string)
-
+	text := text[1, len(text)]
+	
 	var response string
 	defer func() {
 		respond <- rtm.NewResponse(msg, "```"+response+"```")
@@ -90,7 +91,7 @@ func okMessage(m rtm.Message) bool {
 
 	log.Printf(channel)
 
-	return msgType == "message" && len(channel) > 0 && channel == "C0D1YQ44R" && len(text) > 0 && text[0] == '>'
+	return msgType == "message" && len(channel) > 0 && channel == "C0D1YQ44R" && len(text) > 0 && text[0] == 'z'
 }
 
 func main() {
