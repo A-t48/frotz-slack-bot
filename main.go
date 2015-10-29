@@ -21,7 +21,8 @@ func onMessage(msg rtm.Message, respond chan rtm.Message) {
 	}
 	user := "lindenlab"
 	text := msg["text"].(string)
-	
+	channel := msg["channel"].(string)
+
 	if(strings.Contains(text, "botsnack")) {
 		log.Printf("%s: > %s", channel, text)
 		defer func() {
@@ -29,8 +30,6 @@ func onMessage(msg rtm.Message, respond chan rtm.Message) {
 		}()
 		return
 	}
-
-	channel := msg["channel"].(string)
 	
 	if(channel != "C0D1YQ44R"){
 		return
