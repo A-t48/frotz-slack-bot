@@ -29,7 +29,7 @@ func onMessage(msg rtm.Message, respond chan rtm.Message) {
 		return
 	}
 
-	channel, ok := m["channel"].(string)
+	channel, ok := msg["channel"].(string)
 	
 	if(channel != "C0D1YQ44R"){
 		return
