@@ -23,6 +23,7 @@ func onMessage(msg rtm.Message, respond chan rtm.Message) {
 	text := msg["text"].(string)
 	
 	if(strings.Contains(text, "botsnack")) {
+		log.Printf("%s: > %s", channel, text)
 		defer func() {
 			respond <- rtm.NewResponse(msg, "_You are eaten by a grue._")
 		}()
