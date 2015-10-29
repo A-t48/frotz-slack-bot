@@ -29,7 +29,7 @@ func onMessage(msg rtm.Message, respond chan rtm.Message) {
 		return
 	}
 
-	channel, ok := msg["channel"].(string)
+	channel := msg["channel"].(string)
 	
 	if(channel != "C0D1YQ44R"){
 		return
@@ -74,7 +74,6 @@ func onMessage(msg rtm.Message, respond chan rtm.Message) {
 		}
 	}
 
-	channel := msg["channel"].(string)
 	log.Printf("%s: > %s", channel, text)
 	for _, line := range strings.Split(response, "\n") {
 		log.Printf("%s: %s\n", channel, line)
