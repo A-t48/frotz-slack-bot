@@ -17,16 +17,24 @@ var (
 
 func onMessage(msg rtm.Message, respond chan rtm.Message) {
 	if !okMessage(msg) {
-		text := msg["text"].(string)
-		if(strings.Contains(text, "botsnack")) {
-			defer func() {
-				respond <- rtm.NewResponse(msg, "_You are eaten by a grue._")
-			}()
-		}
 		return
 	}
 	user := "lindenlab"
 	text := msg["text"].(string)
+	
+	if(strings.Contains(text, "botsnack")) {
+		defer func() {
+			respond <- rtm.NewResponse(msg, "_You are eaten by a grue._")
+		}()
+		return
+	}
+
+	channel, ok := m["channel"].(string)
+	
+	if(channel != "C0D1YQ44R"){
+		return
+	}
+
 	text = text[1:len(text)]
 
 	var response string
@@ -97,7 +105,7 @@ func okMessage(m rtm.Message) bool {
 
 	log.Printf(channel)
 
-	return msgType == "message" && len(channel) > 0 && channel == "C0D1YQ44R" && len(text) > 0 && text[0] == 'z'
+	return msgType == "message" && len(channel) > 0 && len(text) > 0 && text[0] == 'z'
 }
 
 func main() {
