@@ -18,8 +18,7 @@ var (
 func onMessage(msg rtm.Message, respond chan rtm.Message) {
 	if !okMessage(msg) {
 		text := msg["text"].(string)
-		if(strings.Contains(text, "botsnack"))
-		{
+		if(strings.Contains(text, "botsnack")) {
 			defer func() {
 				respond <- rtm.NewResponse(msg, "_You are eaten by a grue._")
 			}()
