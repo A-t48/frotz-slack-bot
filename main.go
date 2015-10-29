@@ -23,18 +23,14 @@ func onMessage(msg rtm.Message, respond chan rtm.Message) {
 	text := msg["text"].(string)
 	channel := msg["channel"].(string)
 	
-
-	log.Printf("%s: > %s", channel, text)
-	
 	if(strings.Contains(text, "botsnack")) {
-		log.Printf("%s: > %s", channel, text)
 		defer func() {
 			respond <- rtm.NewResponse(msg, "_You are eaten by a grue._")
 		}()
 		return
 	}
 	
-	if(channel != "C0D1YQ44R"){
+	if(channel != "C0D1YQ44R" || text[0] != 'z'){
 		return
 	}
 
@@ -107,7 +103,7 @@ func okMessage(m rtm.Message) bool {
 
 	log.Printf(channel)
 
-	return msgType == "message" && len(channel) > 0 && len(text) > 0 && text[0] == 'z'
+	return msgType == "message" && len(channel) > 0 && len(text) > 0
 }
 
 func main() {
